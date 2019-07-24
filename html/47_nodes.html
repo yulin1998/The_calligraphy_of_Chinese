@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="../css/47_nodes.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="../js/echarts.js"></script>
+    <script src="../js/echarts2.js"></script>
+</head>
+<body>
+<div class="header">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link active" href="./47_nodes.html">LOUVAIN</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./seal.html">SEAL</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./regular.html">REGULAR</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./cursive.html">CURSIVE</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./clerical.html">CLERICAL</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./semicursive.html">SEMICURSIVE</a>
+        </li>
+    </ul>
+</div>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main">
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));
+        option = {
+            // title : {
+            //     text: '人物关系：乔布斯',
+            //     subtext: '数据来自人立方',
+            //     x:'right',
+            //     y:'bottom'
+            // },
+            tooltip : {
+                trigger: 'item',
+                formatter: '{b}'
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    restore : {show: true},
+                    magicType: {show: true, type: ['force']},
+                    saveAsImage : {show: false}
+                }
+            },
+            legend: {
+                x: 'center',
+                data:['C1', 'C2', 'C3', 'C4']
+            },
+            series : [
+                {
+                    type:'force',
+                    name : "人物关系",
+                    ribbonType: false,
+                    categories : [
+                        {
+                            name: 'default'
+                        },
+                        {
+                            name: 'C1'
+                        },
+                        {
+                            name: 'C2'
+                        },
+                        {
+                            name: 'C3'
+                        },
+                        {
+                            name: 'C4'
+                        }
+                    ],
+                    itemStyle: {
+                        normal: {
+                            label: {
+                                show: true,
+                                textStyle: {
+                                    color: '#333'
+                                }
+                            },
+                            nodeStyle : {
+                                brushType : 'both',
+                                borderColor : 'rgba(255,215,0,0.4)',
+                                borderWidth : 1
+                            },
+                            linkStyle: {
+                                type: 'curve'
+                            }
+                        },
+                        emphasis: {
+                            label: {
+                                show: false
+                                // textStyle: null      // 默认使用全局文本样式，详见TEXTSTYLE
+                            },
+                            nodeStyle : {
+                                // r: 30
+                            },
+                            linkStyle : {}
+                        }
+                    },
+                    useWorker: false,
+                    minRadius : 18,
+                    maxRadius : 54,
+                    gravity: 1.0,
+                    scaling: 2.5,
+                    roam: 'move',
+                    nodes:[
+                        {category:1, name: 'Cursive-东汉-张芝', value : 308},
+                        {category:2, name: 'Cursive-东晋-王羲之', value : 308},
+                        {category:1, name: 'Cursive-近现代-毛泽东', value : 307},
+                        {category:2, name: 'Cursive-明-王铎', value : 308},
+                        {category:2, name: 'Cursive-明-文征明', value : 306},
+                        {category:3, name: 'Cursive-明-徐渭', value : 301},
+                        {category:2, name: 'Cursive-明-朱耷', value : 309},
+                        {category:1, name: 'Cursive-明-祝允明', value : 304},
+                        {category:1, name: 'Cursive-明-祝枝山', value : 305},
+                        {category:3, name: 'Cursive-清-郑板桥', value : 305},  //3
+                        {category:4, name: 'Clerical-东汉-孙兴刻', value : 308},
+                        {category:4, name: 'Clerical-东汉-王敝', value : 308},
+                        {category:3, name: 'Clerical-清-邓石如', value : 315},
+                        {category:4, name: 'Clerical-清-何绍基', value : 304},
+                        {category:3, name: 'Clerical-清-金农', value : 316},
+                        {category:1, name: 'Clerical-清-郑板桥', value : 307},  //4
+                        {category:4, name: 'Clerical-北宋-蔡邕', value : 305},
+                        {category:4, name: 'Clerical-南宋-赵孟頫', value : 310},
+                        {category:4, name: 'Clerical-唐-李隆基', value : 309},
+                        {category:1, name: 'Regular-东汉-钟繇', value : 305},
+                        {category:1, name: 'Regular-东晋-王羲之', value : 306},
+                        {category:1, name: 'Regular-明-唐寅', value : 310},
+                        {category:1, name: 'Regular-明-文征明', value : 304},
+                        {category:2, name: 'Regular-北宋-蔡襄', value : 306},
+                        {category:1, name: 'Regular-北宋-米芾', value : 305},
+                        {category:1, name: 'Regular-宋-赵佶', value : 307},
+                        {category:1, name: 'Regular-南宋-赵孟頫', value : 306},
+                        {category:2, name: 'Regular-唐-褚遂良', value : 304},
+                        {category:3, name: 'Regular-唐-柳公权', value : 304},
+                        {category:2, name: 'Seal-东汉-许慎', value : 317},
+                        {category:2, name: 'Seal-清-邓石如', value : 309},
+                        {category:2, name: 'Seal-清-吴让之', value : 312},
+                        {category:1, name: 'Seal-清-吴咨', value : 319},
+                        {category:2, name: 'Seal-清-伊秉绶', value : 317},
+                        {category:2, name: 'Seal-清-杨沂孙', value : 307},
+                        {category:2, name: 'Seal-清-赵之谦', value : 313},
+                        {category:1, name: 'Seal-秦-李斯', value : 319},
+                        {category:3, name: 'SemiCursive-明-徐渭', value : 307},
+                        {category:3, name: 'SemiCursive-明-朱耷', value : 307},
+                        {category:3, name: 'SemiCursive-明-祝枝山', value : 306},
+                        {category:3, name: 'SemiCursive-清-康有为', value : 310},
+                        {category:3, name: 'SemiCursive-清-刘墉', value : 310},
+                        {category:3, name: 'SemiCursive-清-郑板桥', value : 308},
+                        {category:3, name: 'SemiCursive-北宋-蔡京', value : 316},
+                        {category:3, name: 'SemiCursive-北宋-蔡襄', value : 326},
+                        {category:3, name: 'SemiCursive-北宋-黄庭坚', value : 316},
+                        {category:2, name: 'SemiCursive-北宋-米芾', value : 309},
+                    ],
+                    links : [
+                        {source: 'Cursive-近现代-毛泽东', target: 'Cursive-东汉-张芝', weight: 171},
+                        {source: 'Cursive-明-王铎', target: 'Cursive-东晋-王羲之', weight: 156},
+                        {source: 'Cursive-明-王铎', target: 'Cursive-近现代-毛泽东', weight: 160},
+                        {source: 'Cursive-明-文征明', target: 'Cursive-东晋-王羲之', weight: 166},
+                        {source: 'Cursive-明-文征明', target: 'Cursive-明-王铎', weight: 166},
+                        {source: 'Cursive-明-祝枝山', target: 'Cursive-东汉-张芝', weight: 165},
+                        {source: 'Clerical-东汉-王敝', target: 'Clerical-东汉-孙兴刻', weight: 169},
+                        {source: 'Clerical-清-邓石如', target: 'Clerical-东汉-孙兴刻', weight: 159},
+                        {source: 'Clerical-清-邓石如', target: 'Clerical-东汉-王敝', weight: 165},
+                        {source: 'Clerical-清-何绍基', target: 'Clerical-东汉-王敝', weight: 171},
+                        {source: 'Clerical-清-金农', target: 'Clerical-东汉-王敝', weight: 154},
+                        {source: 'Clerical-清-金农', target: 'Clerical-清-邓石如', weight: 158},
+                        {source: 'Clerical-清-郑板桥', target: 'Clerical-东汉-王敝', weight: 150},
+                        {source: 'Clerical-清-郑板桥', target: 'Clerical-清-邓石如', weight: 159},
+                        {source: 'Clerical-清-郑板桥', target: 'Clerical-清-金农', weight: 136},
+                        {source: 'Clerical-北宋-蔡邕', target: 'Clerical-东汉-王敝', weight: 143},
+                        {source: 'Clerical-北宋-蔡邕', target: 'Clerical-清-金农', weight: 140},
+                        {source: 'Clerical-北宋-蔡邕', target: 'Clerical-清-郑板桥', weight: 141},
+                        {source: 'Clerical-南宋-赵孟頫', target: 'Clerical-东汉-孙兴刻', weight: 165},
+                        {source: 'Clerical-南宋-赵孟頫', target: 'Clerical-东汉-王敝', weight: 163},
+                        {source: 'Clerical-南宋-赵孟頫', target: 'Clerical-清-邓石如', weight: 161},
+                        {source: 'Clerical-南宋-赵孟頫', target: 'Clerical-清-金农', weight: 163},
+                        {source: 'Clerical-南宋-赵孟頫', target: 'Clerical-清-郑板桥', weight: 163},
+                        {source: 'Clerical-南宋-赵孟頫', target: 'Clerical-北宋-蔡邕', weight: 165},
+                        {source: 'Clerical-唐-李隆基', target: 'Clerical-东汉-王敝', weight: 146},
+                        {source: 'Clerical-唐-李隆基', target: 'Clerical-清-邓石如', weight: 140},
+                        {source: 'Clerical-唐-李隆基', target: 'Clerical-清-何绍基', weight: 167},
+                        {source: 'Clerical-唐-李隆基', target: 'Clerical-清-金农', weight: 140},
+                        {source: 'Clerical-唐-李隆基', target: 'Clerical-清-郑板桥', weight: 141},
+                        {source: 'Clerical-唐-李隆基', target: 'Clerical-北宋-蔡邕', weight: 138},
+                        {source: 'Clerical-唐-李隆基', target: 'Clerical-南宋-赵孟頫', weight: 165},
+                        {source: 'Regular-东汉-钟繇', target: 'Cursive-东汉-张芝', weight: 165},
+                        {source: 'Regular-东汉-钟繇', target: 'Cursive-明-祝枝山', weight: 170},
+                        {source: 'Regular-东晋-王羲之', target: 'Cursive-东汉-张芝', weight: 167},
+                        {source: 'Regular-明-唐寅', target: 'Cursive-明-祝允明', weight: 167},
+                        {source: 'Regular-明-唐寅', target: 'Cursive-清-郑板桥', weight: 166},
+                        {source: 'Regular-明-唐寅', target: 'Clerical-清-金农', weight: 165},
+                        {source: 'Regular-明-文征明', target: 'Clerical-清-金农', weight: 167},
+                        {source: 'Regular-明-文征明', target: 'Clerical-清-郑板桥', weight: 172},
+                        {source: 'Regular-明-文征明', target: 'Regular-明-唐寅', weight: 170},
+                        {source: 'Regular-北宋-蔡襄', target: 'Regular-明-唐寅', weight: 171},
+                        {source: 'Regular-北宋-米芾', target: 'Cursive-东汉-张芝', weight: 169},
+                        {source: 'Regular-北宋-米芾', target: 'Regular-东晋-王羲之', weight: 172},
+                        {source: 'Regular-宋-赵佶', target: 'Cursive-东汉-张芝', weight: 156},
+                        {source: 'Regular-宋-赵佶', target: 'Cursive-近现代-毛泽东', weight: 162},
+                        {source: 'Regular-宋-赵佶', target: 'Cursive-明-王铎', weight: 172},
+                        {source: 'Regular-宋-赵佶', target: 'Cursive-明-祝枝山', weight: 164},
+                        {source: 'Regular-宋-赵佶', target: 'Regular-东汉-钟繇', weight: 161},
+                        {source: 'Regular-宋-赵佶', target: 'Regular-东晋-王羲之', weight: 171},
+                        {source: 'Regular-南宋-赵孟頫', target: 'Cursive-明-祝允明', weight: 161},
+                        {source: 'Regular-南宋-赵孟頫', target: 'Regular-明-唐寅', weight: 157},
+                        {source: 'Regular-唐-褚遂良', target: 'Cursive-东晋-王羲之', weight: 155},
+                        {source: 'Regular-唐-柳公权', target: 'Clerical-清-邓石如', weight: 171},
+                        {source: 'Regular-唐-柳公权', target: 'Clerical-清-金农', weight: 166},
+                        {source: 'Seal-东汉-许慎', target: 'Cursive-东晋-王羲之', weight: 164},
+                        {source: 'Seal-东汉-许慎', target: 'Cursive-近现代-毛泽东', weight: 158},
+                        {source: 'Seal-东汉-许慎', target: 'Cursive-明-王铎', weight: 154},
+                        {source: 'Seal-东汉-许慎', target: 'Cursive-明-文征明', weight: 162},
+                        {source: 'Seal-东汉-许慎', target: 'Cursive-明-朱耷', weight: 167},
+                        {source: 'Seal-东汉-许慎', target: 'Regular-北宋-蔡襄', weight: 170},
+                        {source: 'Seal-东汉-许慎', target: 'Regular-南宋-赵孟頫', weight: 170},
+                        {source: 'Seal-清-邓石如', target: 'Cursive-明-朱耷', weight: 154},
+                        {source: 'Seal-清-邓石如', target: 'Seal-东汉-许慎', weight: 161},
+                        {source: 'Seal-清-吴让之', target: 'Cursive-东晋-王羲之', weight: 167},
+                        {source: 'Seal-清-吴让之', target: 'Cursive-明-文征明', weight: 169},
+                        {source: 'Seal-清-吴让之', target: 'Cursive-明-朱耷', weight: 167},
+                        {source: 'Seal-清-吴让之', target: 'Clerical-东汉-孙兴刻', weight: 172},
+                        {source: 'Seal-清-吴让之', target: 'Regular-唐-褚遂良', weight: 158},
+                        {source: 'Seal-清-吴让之', target: 'Seal-东汉-许慎', weight: 171},
+                        {source: 'Seal-清-吴让之', target: 'Seal-清-邓石如', weight: 157},
+                        {source: 'Seal-清-吴咨', target: 'Cursive-东晋-王羲之', weight: 160},
+                        {source: 'Seal-清-吴咨', target: 'Cursive-近现代-毛泽东', weight: 160},
+                        {source: 'Seal-清-吴咨', target: 'Cursive-明-王铎', weight: 155},
+                        {source: 'Seal-清-吴咨', target: 'Cursive-明-文征明', weight: 169},
+                        {source: 'Seal-清-吴咨', target: 'Cursive-明-祝允明', weight: 167},
+                        {source: 'Seal-清-吴咨', target: 'Cursive-明-祝枝山', weight: 169},
+                        {source: 'Seal-清-吴咨', target: 'Regular-东汉-钟繇', weight: 170},
+                        {source: 'Seal-清-吴咨', target: 'Regular-东晋-王羲之', weight: 169},
+                        {source: 'Seal-清-吴咨', target: 'Regular-明-唐寅', weight: 164},
+                        {source: 'Seal-清-吴咨', target: 'Regular-北宋-蔡襄', weight: 163},
+                        {source: 'Seal-清-吴咨', target: 'Regular-北宋-米芾', weight: 163},
+                        {source: 'Seal-清-吴咨', target: 'Regular-南宋-赵孟頫', weight: 157},
+                        {source: 'Seal-清-吴咨', target: 'Seal-东汉-许慎', weight: 146},
+                        {source: 'Seal-清-伊秉绶', target: 'Cursive-东汉-张芝', weight: 168},
+                        {source: 'Seal-清-伊秉绶', target: 'Cursive-东晋-王羲之', weight: 151},
+                        {source: 'Seal-清-伊秉绶', target: 'Cursive-近现代-毛泽东', weight: 166},
+                        {source: 'Seal-清-伊秉绶', target: 'Cursive-明-王铎', weight: 156},
+                        {source: 'Seal-清-伊秉绶', target: 'Cursive-明-文征明', weight: 164},
+                        {source: 'Seal-清-伊秉绶', target: 'Clerical-清-何绍基', weight: 170},
+                        {source: 'Seal-清-伊秉绶', target: 'Regular-东晋-王羲之', weight: 168},
+                        {source: 'Seal-清-伊秉绶', target: 'Regular-北宋-蔡襄', weight: 171},
+                        {source: 'Seal-清-伊秉绶', target: 'Regular-北宋-米芾', weight: 162},
+                        {source: 'Seal-清-伊秉绶', target: 'Regular-唐-褚遂良', weight: 157},
+                        {source: 'Seal-清-伊秉绶', target: 'Seal-东汉-许慎', weight: 152},
+                        {source: 'Seal-清-伊秉绶', target: 'Seal-清-邓石如', weight: 172},
+                        {source: 'Seal-清-伊秉绶', target: 'Seal-清-吴让之', weight: 160},
+                        {source: 'Seal-清-伊秉绶', target: 'Seal-清-吴咨', weight: 150},
+                        {source: 'Seal-清-杨沂孙', target: 'Cursive-明-朱耷', weight: 168},
+                        {source: 'Seal-清-杨沂孙', target: 'Seal-东汉-许慎', weight: 171},
+                        {source: 'Seal-清-杨沂孙', target: 'Seal-清-邓石如', weight: 159},
+                        {source: 'Seal-清-杨沂孙', target: 'Seal-清-吴让之', weight: 163},
+                        {source: 'Seal-清-赵之谦', target: 'Cursive-明-朱耷', weight: 153},
+                        {source: 'Seal-清-赵之谦', target: 'Clerical-东汉-孙兴刻', weight: 148},
+                        {source: 'Seal-清-赵之谦', target: 'Clerical-清-邓石如', weight: 140},
+                        {source: 'Seal-清-赵之谦', target: 'Clerical-南宋-赵孟頫', weight: 165},
+                        {source: 'Seal-清-赵之谦', target: 'Clerical-唐-李隆基', weight: 164},
+                        {source: 'Seal-清-赵之谦', target: 'Seal-清-邓石如', weight: 145},
+                        {source: 'Seal-清-赵之谦', target: 'Seal-清-吴让之', weight: 138},
+                        {source: 'Seal-清-赵之谦', target: 'Seal-清-伊秉绶', weight: 172},
+                        {source: 'Seal-清-赵之谦', target: 'Seal-清-杨沂孙', weight: 159},
+                        {source: 'Seal-秦-李斯', target: 'Cursive-东汉-张芝', weight: 167},
+                        {source: 'Seal-秦-李斯', target: 'Cursive-东晋-王羲之', weight: 156},
+                        {source: 'Seal-秦-李斯', target: 'Cursive-近现代-毛泽东', weight: 168},
+                        {source: 'Seal-秦-李斯', target: 'Cursive-明-王铎', weight: 159},
+                        {source: 'Seal-秦-李斯', target: 'Cursive-明-祝允明', weight: 162},
+                        {source: 'Seal-秦-李斯', target: 'Cursive-明-祝枝山', weight: 167},
+                        {source: 'Seal-秦-李斯', target: 'Clerical-清-何绍基', weight: 166},
+                        {source: 'Seal-秦-李斯', target: 'Regular-东汉-钟繇', weight: 163},
+                        {source: 'Seal-秦-李斯', target: 'Regular-东晋-王羲之', weight: 165},
+                        {source: 'Seal-秦-李斯', target: 'Regular-明-唐寅', weight: 163},
+                        {source: 'Seal-秦-李斯', target: 'Regular-明-文征明', weight: 166},
+                        {source: 'Seal-秦-李斯', target: 'Regular-北宋-蔡襄', weight: 165},
+                        {source: 'Seal-秦-李斯', target: 'Regular-北宋-米芾', weight: 154},
+                        {source: 'Seal-秦-李斯', target: 'Regular-宋-赵佶', weight: 171},
+                        {source: 'Seal-秦-李斯', target: 'Regular-南宋-赵孟頫', weight: 159},
+                        {source: 'Seal-秦-李斯', target: 'Regular-唐-褚遂良', weight: 162},
+                        {source: 'Seal-秦-李斯', target: 'Seal-东汉-许慎', weight: 157},
+                        {source: 'Seal-秦-李斯', target: 'Seal-清-吴咨', weight: 144},
+                        {source: 'Seal-秦-李斯', target: 'Seal-清-伊秉绶', weight: 148},
+                        {source: 'SemiCursive-明-徐渭', target: 'Cursive-清-郑板桥', weight: 166},
+                        {source: 'SemiCursive-明-徐渭', target: 'Clerical-清-金农', weight: 167},
+                        {source: 'SemiCursive-明-朱耷', target: 'Clerical-清-邓石如', weight: 169},
+                        {source: 'SemiCursive-明-朱耷', target: 'Clerical-清-金农', weight: 171},
+                        {source: 'SemiCursive-明-朱耷', target: 'SemiCursive-明-徐渭', weight: 168},
+                        {source: 'SemiCursive-明-祝枝山', target: 'Clerical-东汉-孙兴刻', weight: 169},
+                        {source: 'SemiCursive-明-祝枝山', target: 'Clerical-清-邓石如', weight: 170},
+                        {source: 'SemiCursive-明-祝枝山', target: 'Seal-清-吴让之', weight: 168},
+                        {source: 'SemiCursive-明-祝枝山', target: 'Seal-清-赵之谦', weight: 152},
+                        {source: 'SemiCursive-清-康有为', target: 'Clerical-清-邓石如', weight: 166},
+                        {source: 'SemiCursive-清-康有为', target: 'Clerical-清-金农', weight: 163},
+                        {source: 'SemiCursive-清-康有为', target: 'Seal-清-赵之谦', weight: 164},
+                        {source: 'SemiCursive-清-康有为', target: 'SemiCursive-明-徐渭', weight: 166},
+                        {source: 'SemiCursive-清-康有为', target: 'SemiCursive-明-朱耷', weight: 167},
+                        {source: 'SemiCursive-清-刘墉', target: 'Cursive-明-朱耷', weight: 171},
+                        {source: 'SemiCursive-清-刘墉', target: 'Clerical-清-金农', weight: 161},
+                        {source: 'SemiCursive-清-刘墉', target: 'Seal-东汉-许慎', weight: 164},
+                        {source: 'SemiCursive-清-刘墉', target: 'Seal-清-吴咨', weight: 171},
+                        {source: 'SemiCursive-清-刘墉', target: 'SemiCursive-清-康有为', weight: 160},
+                        {source: 'SemiCursive-清-郑板桥', target: 'Clerical-清-邓石如', weight: 163},
+                        {source: 'SemiCursive-清-郑板桥', target: 'Clerical-清-金农', weight: 152},
+                        {source: 'SemiCursive-清-郑板桥', target: 'Clerical-唐-李隆基', weight: 165},
+                        {source: 'SemiCursive-清-郑板桥', target: 'SemiCursive-清-康有为', weight: 164},
+                        {source: 'SemiCursive-清-郑板桥', target: 'SemiCursive-清-刘墉', weight: 150},
+                        {source: 'SemiCursive-北宋-蔡京', target: 'Cursive-明-朱耷', weight: 160},
+                        {source: 'SemiCursive-北宋-蔡京', target: 'Cursive-清-郑板桥', weight: 170},
+                        {source: 'SemiCursive-北宋-蔡京', target: 'Clerical-东汉-孙兴刻', weight: 161},
+                        {source: 'SemiCursive-北宋-蔡京', target: 'Clerical-清-邓石如', weight: 153},
+                        {source: 'SemiCursive-北宋-蔡京', target: 'Clerical-南宋-赵孟頫', weight: 172},
+                        {source: 'SemiCursive-北宋-蔡京', target: 'Seal-清-邓石如', weight: 156},
+                        {source: 'SemiCursive-北宋-蔡京', target: 'Seal-清-赵之谦', weight: 132},
+                        {source: 'SemiCursive-北宋-蔡京', target: 'SemiCursive-明-徐渭', weight: 163},
+                        {source: 'SemiCursive-北宋-蔡京', target: 'SemiCursive-明-朱耷', weight: 155},
+                        {source: 'SemiCursive-北宋-蔡京', target: 'SemiCursive-明-祝枝山', weight: 160},
+                        {source: 'SemiCursive-北宋-蔡京', target: 'SemiCursive-清-康有为', weight: 148},
+                        {source: 'SemiCursive-北宋-蔡京', target: 'SemiCursive-清-刘墉', weight: 164},
+                        {source: 'SemiCursive-北宋-蔡京', target: 'SemiCursive-清-郑板桥', weight: 169},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Cursive-明-徐渭', weight: 172},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Cursive-明-朱耷', weight: 151},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Cursive-清-郑板桥', weight: 164},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Clerical-东汉-孙兴刻', weight: 157},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Clerical-清-邓石如', weight: 147},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Clerical-清-金农', weight: 171},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Clerical-南宋-赵孟頫', weight: 167},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Regular-明-唐寅', weight: 172},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Regular-北宋-蔡襄', weight: 170},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Regular-唐-柳公权', weight: 166},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Seal-东汉-许慎', weight: 155},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Seal-清-邓石如', weight: 143},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Seal-清-吴让之', weight: 157},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Seal-清-吴咨', weight: 171},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Seal-清-伊秉绶', weight: 162},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Seal-清-杨沂孙', weight: 161},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'Seal-清-赵之谦', weight: 130},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'SemiCursive-明-徐渭', weight: 163},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'SemiCursive-明-朱耷', weight: 155},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'SemiCursive-明-祝枝山', weight: 156},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'SemiCursive-清-康有为', weight: 149},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'SemiCursive-清-刘墉', weight: 154},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'SemiCursive-清-郑板桥', weight: 163},
+                        {source: 'SemiCursive-北宋-蔡襄', target: 'SemiCursive-北宋-蔡京', weight: 128},
+                        {source: 'SemiCursive-北宋-黄庭坚', target: 'Cursive-清-郑板桥', weight: 170},
+                        {source: 'SemiCursive-北宋-黄庭坚', target: 'Clerical-清-邓石如', weight: 164},
+                        {source: 'SemiCursive-北宋-黄庭坚', target: 'Clerical-清-金农', weight: 150},
+                        {source: 'SemiCursive-北宋-黄庭坚', target: 'Regular-明-唐寅', weight: 165},
+                        {source: 'SemiCursive-北宋-黄庭坚', target: 'Regular-南宋-赵孟頫', weight: 172},
+                        {source: 'SemiCursive-北宋-黄庭坚', target: 'Regular-唐-柳公权', weight: 172},
+                        {source: 'SemiCursive-北宋-黄庭坚', target: 'Seal-东汉-许慎', weight: 167},
+                        {source: 'SemiCursive-北宋-黄庭坚', target: 'Seal-清-吴咨', weight: 169},
+                        {source: 'SemiCursive-北宋-黄庭坚', target: 'SemiCursive-明-徐渭', weight: 168},
+                        {source: 'SemiCursive-北宋-黄庭坚', target: 'SemiCursive-明-朱耷', weight: 163},
+                        {source: 'SemiCursive-北宋-黄庭坚', target: 'SemiCursive-清-康有为', weight: 152},
+                        {source: 'SemiCursive-北宋-黄庭坚', target: 'SemiCursive-清-刘墉', weight: 131},
+                        {source: 'SemiCursive-北宋-黄庭坚', target: 'SemiCursive-清-郑板桥', weight: 151},
+                        {source: 'SemiCursive-北宋-黄庭坚', target: 'SemiCursive-北宋-蔡京', weight: 152},
+                        {source: 'SemiCursive-北宋-黄庭坚', target: 'SemiCursive-北宋-蔡襄', weight: 146},
+                        {source: 'SemiCursive-北宋-米芾', target: 'Cursive-明-朱耷', weight: 163},
+                        {source: 'SemiCursive-北宋-米芾', target: 'Seal-东汉-许慎', weight: 155},
+                        {source: 'SemiCursive-北宋-米芾', target: 'Seal-清-邓石如', weight: 156},
+                        {source: 'SemiCursive-北宋-米芾', target: 'Seal-清-吴咨', weight: 171},
+                        {source: 'SemiCursive-北宋-米芾', target: 'Seal-清-杨沂孙', weight: 170},
+                        {source: 'SemiCursive-北宋-米芾', target: 'SemiCursive-清-刘墉', weight: 153},
+                        {source: 'SemiCursive-北宋-米芾', target: 'SemiCursive-北宋-蔡京', weight: 167},
+                        {source: 'SemiCursive-北宋-米芾', target: 'SemiCursive-北宋-蔡襄', weight: 150},
+                        {source: 'SemiCursive-北宋-米芾', target: 'SemiCursive-北宋-黄庭坚', weight: 164}
+                    ]
+                }
+            ]
+        };
+        myChart.setOption(option);
+    </script>
+</div>
+</body>
+</html>
