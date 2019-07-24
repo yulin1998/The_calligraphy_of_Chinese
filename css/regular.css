@@ -1,0 +1,59 @@
+body{
+    background: url("../image/images/5.jpg");
+    background-size: cover;
+}
+.header{
+    width: 1600px;
+    height: 100px;
+    background: #333;
+    opacity: 0.75;
+}
+.nav{
+    height: 100px;
+    background: #333;
+    opacity: inherit;
+}
+.nav-item{
+    width: 250px;
+    height: 100px;
+}
+.dropdown-item{
+    width: 100%;
+    height: 80px;
+    font-family: "Apple Braille";
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    z-index: 999;
+}
+.nav-link{
+    width: 100%;
+    height: 100px;
+    font-family: "Apple Braille";
+    font-size: 35px;
+    text-align: center;
+    padding-top: 25px;
+    align-items: center;
+    color: white;
+}
+
+.container{
+    width: 100%;
+    height: 830px;
+    padding-top: 140px;
+}
+.h1{
+    font-family: "Apple Braille";
+    font-size: 25px;
+    color: #333;
+}
+#wrap{
+    display: flex;
+    justify-content: space-around;
+    height: 765px;
+}
+.display{
+    width: 420px;
+    height: 420px;
+    opacity: 0.85;
+}

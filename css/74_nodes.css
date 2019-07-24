@@ -1,0 +1,42 @@
+body{
+    background: url("./images/5.jpg");
+    background-size: cover;
+}
+.header{
+    width: 1600px;
+    height: 100px;
+    background: #333;
+    opacity: 0.75;
+}
+.nav{
+    height: 100px;
+    background: #333;
+    opacity: inherit;
+}
+.nav-item{
+    width: 250px;
+    height: 100px;
+}
+.dropdown-item{
+    width: 100%;
+    height: 80px;
+    font-family: "Apple Braille";
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+}
+.nav-link{
+    width: 100%;
+    height: 100px;
+    font-family: "Apple Braille";
+    font-size: 35px;
+    text-align: center;
+    padding-top: 25px;
+    align-items: center;
+    color: white;
+}
+#main{
+    padding-top: 20px;
+    width: 1550px;
+    height: 812px;
+}

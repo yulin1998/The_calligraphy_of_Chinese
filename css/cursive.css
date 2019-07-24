@@ -1,0 +1,51 @@
+body{
+    background: url("../image/images/6.jpg");
+    background-size: cover;
+}
+.header{
+    width: 1600px;
+    height: 100px;
+    background: #333;
+    opacity: 0.75;
+}
+.nav{
+    height: 100px;
+    background: #333;
+    opacity: inherit;
+}
+.nav-item{
+    width: 250px;
+    height: 100px;
+}
+.dropdown-item{
+    width: 100%;
+    height: 80px;
+    font-family: "Apple Braille";
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    z-index: 99999;
+
+}
+.nav-link{
+    width: 100%;
+    height: 100px;
+    font-family: "Apple Braille";
+    font-size: 35px;
+    text-align: center;
+    padding-top: 25px;
+    align-items: center;
+    color: white;
+}
+.display1{
+    padding-top: 150px;
+    padding-left: 20px;
+    height: 460px;
+    width: 460px;
+    opacity: 0.85;
+}
+#warp1{
+    display: flex;
+    justify-content: space-around;
+    height: 765px;
+}

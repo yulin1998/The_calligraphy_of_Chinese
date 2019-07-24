@@ -1,0 +1,60 @@
+body{
+    background: url("../image/images/7.jpg");
+    background-size: cover;
+}
+.header{
+    width: 1600px;
+    height: 100px;
+    background: #333;
+    opacity: 0.75;
+}
+.nav{
+    height: 100px;
+    background: #333;
+    opacity: inherit;
+}
+.nav-item{
+    width: 250px;
+    height: 100px;
+}
+.dropdown-item{
+    width: 100%;
+    height: 80px;
+    font-family: "Apple Braille";
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    z-index: 999;
+}
+.nav-link{
+    width: 100%;
+    height: 100px;
+    font-family: "Apple Braille";
+    font-size: 35px;
+    text-align: center;
+    padding-top: 25px;
+    align-items: center;
+    color: white;
+}
+
+#wrap{
+    display: flex;
+    justify-content: space-around;
+    width: 1600px;
+    height: 800px;
+    opacity: 0.85;
+}
+#div1{
+    height: 780px;
+    width: 780px;
+    padding-top: 20px;
+}
+#div2{
+    height: 390px;
+    width: 390px;
+    padding-top: 20px;
+    padding-left: 10px;
+}
+#div3{
+    padding-top: 20px;
+}
